@@ -48,10 +48,20 @@ jobs:
           git apply $GITHUB_WORKSPACE/opencv-spm/opencv.patch
           pip3 install pathlib
           python3 platforms/apple/build_xcframework.py \
-              --iphoneos_archs=arm64 \
-              --visionos_archs=arm64 \
-              --visionsimulator_archs=x86_64,arm64 \
-              --disable-bitcode -o build
+              --build_only_specified_archs \
+              --macos_archs=x86_64,arm64 \
+              --framework_name=OpenCV \
+              --disable-bitcode -o build \
+              --without highgui \
+              --without video \
+              --without videoio \
+              --without js \
+              --without java \
+              --without calib3d \
+              --without python \
+              --without ts \
+              --without world \
+              --without ml
 
       - name: Zip artifact
         working-directory: opencv
