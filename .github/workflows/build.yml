@@ -61,11 +61,7 @@ jobs:
               --without python \
               --without ts \
               --without world \
-              --without ml \
-              --without dnn \
-              --without flann \
-              --without gapi \
-              --without objdetect \
+              --without ml
 
       - name: Zip artifact
         working-directory: opencv
