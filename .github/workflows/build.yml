@@ -54,7 +54,7 @@ jobs:
           --disable-bitcode -o build \
           --without highgui \
           --without video \
-          --without videoio
+          --without videoio \
           --without dnn \
           --without gapi \
           --without imgproc \
@@ -66,8 +66,6 @@ jobs:
           --without photo \
           --without python \
           --without ts \
-          --without video \
-          --without videoio \
           --without world
         
 
