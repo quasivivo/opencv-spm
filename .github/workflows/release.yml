@@ -23,7 +23,7 @@ jobs:
       - name: Download artifact
         uses: actions/download-artifact@v3
         with:
-          name: opencv2.xcframework.zip
+          name: OpenCV.xcframework.zip
 
       - name: Get version
         id: get_version
@@ -38,7 +38,7 @@ jobs:
       - name: Update Package.swift
         run: |
           sed -i "s/let version = \".*\"/let version = \"${{ steps.get_version.outputs.VERSION }}\"/" Package.swift
-          sed -i "s/let checksum = \".*\"/let checksum = \"$(shasum -a 256 opencv2.xcframework.zip | cut -d ' ' -f 1)\"/" Package.swift
+          sed -i "s/let checksum = \".*\"/let checksum = \"$(shasum -a 256 OpenCV.xcframework.zip | cut -d ' ' -f 1)\"/" Package.swift
 
       - name: Commit and push
         run: |
@@ -51,5 +51,5 @@ jobs:
       - name: Release
         uses: softprops/action-gh-release@v1
         with:
-          files: opencv2.xcframework.zip
+          files: OpenCV.xcframework.zip
           tag_name: ${{ steps.get_version.outputs.VERSION }}
